@@ -9,24 +9,23 @@ type Props ={activities:Activity[]
   editMode:boolean;
   closeForm:()=>void;
   openForm:(id?:string)=>void;
-  submitForm:(activity:Activity)=>void;
-  deleteForm:(id:string)=>void;
+  // submitForm:(activity:Activity)=>void;
 }
 export default function Activitydashboard({activities,cancelSelectActivity,selectActivity,selectedActivity,
-  editMode,closeForm,openForm,submitForm,deleteForm }:Props) {
+  editMode,closeForm,openForm }:Props) {
   return (
     <Grid2 container spacing={3}>
       <Grid2 size={7} >
         <ActivityList activities={activities}
-        selectActivity={selectActivity} deleteForm={deleteForm}></ActivityList>
+        selectActivity={selectActivity} ></ActivityList>
       </Grid2>
       <Grid2 size={5}>
-        {selectedActivity && !editMode && <Activitydetail activity={selectedActivity}
+        {selectedActivity && !editMode && <Activitydetail selectedactivity={selectedActivity}
         cancelSelectActivity ={cancelSelectActivity}
         openForm={openForm}
         ></Activitydetail>}
         {editMode && <ActivityForm closeForm={closeForm} activity={selectedActivity} 
-        submitForm={submitForm}></ActivityForm>}
+        ></ActivityForm>}
       </Grid2>
     </Grid2>
   )
