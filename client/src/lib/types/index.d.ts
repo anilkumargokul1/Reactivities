@@ -1,10 +1,10 @@
 type Activity = {
     id: string
     title: string
-    description: string
     date: string
+    description: string
     category: string
-    isCancelled: number
+    isCancelled: boolean
     city: string
     venue: string
     latitude: number

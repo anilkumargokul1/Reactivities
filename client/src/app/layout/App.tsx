@@ -1,34 +1,31 @@
-import { Box, Container, CssBaseline, Typography } from "@mui/material";
-import {  useState } from "react"
+import { Box, Container, CssBaseline } from "@mui/material";
 import Navbar from "./Navbar";
-import Activitydashboard from "../../features/Activities/dashboard/ActivityDashboard";
-import { useActivities } from "../../lib/hooks/useActivities";
+import { Outlet } from "react-router";
 
 function App() {
   // const [activities, setactivities]=useState<Activity[]>([]);
-  const [selectedactivity, setSelectedActity]=useState<Activity|undefined>(undefined);
-  const [editMode, setEditMode]=useState(false);
-  const {activities, isPending}=useActivities();
+  // const [selectedactivity, setSelectedActity]=useState<Activity|undefined>(undefined);
+  // const [editMode, setEditMode]=useState(false);
   // useEffect(()=>{
   //   axios.get<Activity[]>('https://localhost:5001/api/activities')
   //   .then(response=>setactivities(response.data))
   // },[])
-  const handleselectedActivity=(id: string)=>{
-    setSelectedActity(activities!.find((x:Activity)=>x.id===id))
-  }
-  const handlecancelselectivity=()=>{
-    setSelectedActity(undefined)
-  }
-  const handleOpenForm=(id?:string)=>{
-    if(id)
-      handleselectedActivity(id);
-    else
-      handlecancelselectivity();
-    setEditMode(true);
-  }
-  const handleCloseForm=()=>{
-    setEditMode(false);
-  }
+  // const handleselectedActivity=(id: string)=>{
+  //   setSelectedActity(activities!.find((x:Activity)=>x.id===id))
+  // }
+  // const handlecancelselectivity=()=>{
+  //   setSelectedActity(undefined)
+  // }
+  // const handleOpenForm=(id?:string)=>{
+  //   if(id)
+  //     handleselectedActivity(id);
+  //   else
+  //     handlecancelselectivity();
+  //   setEditMode(true);
+  // }
+  // const handleCloseForm=()=>{
+  //   setEditMode(false);
+  // }
   // const handleSubmitForm=(activity:Activity)=>
   // {
   //   // if(activity.id){
@@ -48,22 +45,9 @@ function App() {
     <>
     <Box sx={{bgcolor:'#eeeeee',minHeight:'100vh'}}>
       <CssBaseline/>
-      <Navbar openForm={handleOpenForm}/>
+      <Navbar/>
       <Container maxWidth='xl' sx={{mt:3}}>
-        {!activities||isPending?
-        (<Typography>Loading...</Typography>)
-        :
-        (
-        <Activitydashboard activities={activities}
-        selectActivity={handleselectedActivity}
-        cancelSelectActivity={handlecancelselectivity}
-        selectedActivity={selectedactivity}
-        editMode={editMode}
-        closeForm={handleCloseForm}
-        openForm={handleOpenForm}
-        // submitForm={handleSubmitForm}
-        />)
-        }
+       <Outlet></Outlet>
       </Container>
     </Box>
     </>
