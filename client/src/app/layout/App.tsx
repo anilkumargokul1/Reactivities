@@ -44,12 +44,6 @@ function App() {
   //   console.log(activity);
   //   setEditMode(false);
   // }
-  const deleteForm=(id:string)=>
-  {
-      // setactivities(activities.filter(x=>x.id!==id));
-    console.log(id);
-
-  }
   return (
     <>
     <Box sx={{bgcolor:'#eeeeee',minHeight:'100vh'}}>
