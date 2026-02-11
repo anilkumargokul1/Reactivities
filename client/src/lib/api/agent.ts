@@ -13,7 +13,6 @@ agent.interceptors.response.use(async Response => {
     try
     {
         sleep(1000);
-        console.log("hi");
         return Response;
     }
     catch(error)
